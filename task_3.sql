@@ -1,24 +1,24 @@
 /*Task 3*/
 
-with average_percentage_growth as
-(select
+WITH average_percentage_growth AS 
+(SELECT 
 	a_year,
 	items,
 	average_prices,
-	(lead(average_prices,1) over (partition by items order by a_year ) / average_prices -1) * 100 as percentage_growth
-from
+	(lead(average_prices, 1) OVER (PARTITION BY items ORDER BY a_year ) / average_prices - 1) * 100 AS percentage_growth
+FROM
 	t_lucia_luptakova_project_sql_primary_final tllpspf
-group by
+GROUP BY 
 	a_year,
 	items,
 	average_prices 
-order by
+ORDER BY 
 	items,
 	a_year)
-select
+SELECT 
 	items,
-	round (avg(percentage_growth) ::numeric, 2) as average_YoY_percetage_increase
-from
+	round (avg(percentage_growth) ::numeric, 2) AS average_YoY_percetage_increase
+FROM 
 	average_percentage_growth
-group by
+GROUP BY 
 	items;
