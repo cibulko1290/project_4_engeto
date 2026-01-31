@@ -1,20 +1,17 @@
-create table t_lucia_luptakova_project_SQL_secondary_final as
-select
+CREATE TABLE t_lucia_luptakova_project_SQL_secondary_final as
+SELECT
 	e.country,
-	e.year as selected_years,
+	e.year AS selected_years,
 	e.gdp,
-	e. gini,
+	e.gini,
 	c.population
-from  
+FROM
 	economies e
-join 
+JOIN 
 	countries c 
-on 
-	e.country = c.country 
-and
-	year between 2006 and 2018
-and 
-	continent = 'Europe'
-order by
+	ON e.country = c.country 
+	AND year BETWEEN 2006 AND 2018
+	AND continent = 'Europe'
+ORDER BY
 	country,
 	year;
