@@ -1,5 +1,5 @@
 CREATE TABLE t_lucia_luptakova_project_SQL_primary_final AS (
-WITH t_primary_1 as ( 
+WITH t_primary_1 AS ( 
 SELECT
 	cp.industry_branch_code,
 	cpib.name AS name_branch,
@@ -59,3 +59,4 @@ LEFT JOIN
 	t_primary_3 tp3
 	ON tp3.b_year = tp. payroll_year
 );
+
