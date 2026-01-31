@@ -1,15 +1,19 @@
 /*Task 2*/
 
-select 
+SELECT  
+	items,
 	payroll_year,
-	round (avg(avg_salary):: numeric, 2) as average_salary,
-	2*sum(average_prices)/count(average_prices ) as sum_bread_milk,
-	round (avg(avg_salary) * count(average_prices) / ( 2 * sum(average_prices)) :: numeric, 0) as quantity_of_items
-from 
+	round (avg(avg_salary):: numeric, 2) AS average_salary,
+	average_prices,
+	round (avg(avg_salary) / (2 * average_prices) :: numeric, 0) AS quantity_of_item
+FROM 
 	t_lucia_luptakova_project_SQL_primary_final
-where 
-	items in ('Chléb konzumní kmínový', 'Mléko polotučné pasterované')
-group by 
-	payroll_year
-order by
+WHERE 
+	items IN ('Chléb konzumní kmínový', 'Mléko polotučné pasterované')
+	AND payroll_year in (2006, 2018)
+GROUP BY 
+	payroll_year,
+	items,
+	average_prices
+ORDER BY 
 	payroll_year;
